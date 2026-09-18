@@ -3,12 +3,20 @@
 /* @jsxFrag Fragment */
 import type { On, RenderElement } from 'claude-code'
 
-import type { GameResultMessage } from './game'
+import type { GameProps, GameResultMessage } from './game'
 
 const PANE_ID = 'sushida'
 const PANE_TITLE = '寿司打'
 const COMMAND_NAME = 'sushida'
 const HIGH_SCORE_KEY = 'sushida:high-score'
+
+/**
+ * `{ highScore: undefined }` は JsonValue として無効で `<Client props>` が
+ * 描画拒否されるため、未確定時はキーごと省く。
+ */
+function gamePropsFrom(highScore: number | undefined): GameProps {
+  return highScore === undefined ? {} : { highScore }
+}
 
 /**
  * `/sushida`: 寿司打クローンのペインを開く。ゲーム本体は Client サーフェス
@@ -61,7 +69,7 @@ export function register(on: On) {
 
     return (
       <Box flexGrow={1}>
-        <Client key="game" module="./game.tsx" props={{ highScore }} flexGrow={1} />
+        <Client key="game" module="./game.tsx" props={gamePropsFrom(highScore)} flexGrow={1} />
       </Box>
     ) as RenderElement
   })
@@ -82,6 +90,6 @@ export function register(on: On) {
 
     const highScore = Number((await $.store.get(HIGH_SCORE_KEY)) ?? 0) || undefined
 
-    return { props: { highScore } }
+    return { props: gamePropsFrom(highScore) }
   })
 }
