@@ -1,0 +1,4 @@
+{
+  "description": "寿司打クローン: /sushida のペイン開閉と ui.render での描画、ui.message でのハイスコア保存",
+  "modules": ["./register.tsx"]
+}

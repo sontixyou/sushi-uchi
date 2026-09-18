@@ -1,0 +1,8 @@
+{
+  "name": "sushida",
+  "version": "0.1.0",
+  "description": "寿司打風の日本語タイピングゲームを /sushida でペインに開く。かな入力のローマ字表記揺れに対応。",
+  "author": {
+    "name": "Kengo Nishimura"
+  }
+}

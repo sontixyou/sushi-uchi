@@ -1,0 +1,14 @@
+{
+  "name": "sushi-uchi",
+  "description": "寿司打クローンの Claude Code mod を配布するマーケットプレイス",
+  "owner": {
+    "name": "Kengo Nishimura"
+  },
+  "plugins": [
+    {
+      "name": "sushida",
+      "source": "./sushida",
+      "description": "寿司打風の日本語タイピングゲームを /sushida でペインに開く"
+    }
+  ]
+}
